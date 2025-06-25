@@ -1,0 +1,297 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Standard {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  categories  String[]
+  isCustom    Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  website     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  files       File[]
+  reports     Report[] @relation("ReportStandards")
+  documents   Document[]
+}
+
+model File {
+  id         String   @id @default(cuid())
+  name       String
+  url        String
+  size       Int
+  type       String
+  standardId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  standard   Standard @relation(fields: [standardId], references: [id], onDelete: Cascade)
+}
+
+model Document {
+  id          String   @id @default(cuid())
+  filename    String
+  filepath    String
+  title       String?
+  region      String   // EU, US, etc.
+  organization String? // SEC, EFRAG, IFRS, etc.
+  documentType String  // PDF, XLSX, etc.
+  fileSize    Int
+  totalPages  Int?
+  processed   Boolean  @default(false)
+  standardId  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  standard    Standard? @relation(fields: [standardId], references: [id], onDelete: SetNull)
+  chunks      DocumentChunk[]
+
+  @@index([filename])
+  @@index([region])
+  @@index([organization])
+  @@index([processed])
+}
+
+model DocumentChunk {
+  id          String   @id @default(cuid())
+  documentId  String
+  chunkIndex  Int
+  content     String   @db.Text
+  metadata    Json?
+  pageNumber  Int?
+  startChar   Int?
+  endChar     Int?
+  tokenCount  Int?
+  embedding   Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  document    Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+  @@index([chunkIndex])
+  @@index([pageNumber])
+}
+
+model VectorSearch {
+  id        String   @id @default(cuid())
+  query     String
+  results   Json
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model Report {
+  id          String        @id @default(cuid())
+  name        String
+  description String?
+  uploadedAt  DateTime      @default(now())
+  status      String        @default("pending")
+  fileUrl     String
+  results     Json?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  activities  Activity[]
+  emissions   ActivityEmission[]
+  shares      ReportShare[]
+  standards   Standard[]    @relation("ReportStandards")
+
+  @@index([status])
+}
+
+model Activity {
+  id        String   @id @default(cuid())
+  type      String
+  details   String
+  user      String?
+  reportId  String?
+  createdAt DateTime @default(now())
+  report    Report?  @relation(fields: [reportId], references: [id], onDelete: Cascade)
+
+  @@index([type])
+  @@index([reportId])
+  @@index([createdAt])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+}
+
+model Organization {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  website     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AnalysisResult {
+  id         String   @id @default(cuid())
+  reportId   String
+  standardId String
+  score      Float
+  findings   Json
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([reportId])
+  @@index([standardId])
+}
+
+model ActivityEmission {
+  id           String   @id @default(cuid())
+  activityType String
+  scope        Int
+  value        Float
+  unit         String
+  factor       Float
+  source       String?
+  description  String?
+  date         DateTime
+  reportId     String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  report       Report   @relation(fields: [reportId], references: [id], onDelete: Cascade)
+
+  @@index([reportId])
+  @@index([scope])
+  @@index([activityType])
+}
+
+model ReportShare {
+  id           String   @id @default(cuid())
+  reportId     String   @unique
+  shareToken   String   @unique
+  expiresAt    DateTime?
+  isActive     Boolean  @default(true)
+  accessCount  Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  report       Report   @relation(fields: [reportId], references: [id], onDelete: Cascade)
+
+  @@index([shareToken])
+  @@index([expiresAt])
+}
+
+// === FINETUNING INFRASTRUCTURE ===
+
+// Training examples for ESG compliance analysis
+model TrainingExample {
+  id            String   @id @default(cuid())
+  input         String   @db.Text  // Question or compliance query
+  context       String   @db.Text  // Retrieved ESG document context
+  expectedOutput String  @db.Text  // Expert-annotated correct response
+  standard      String              // TCFD, ESRS, GRI, etc.
+  category      String              // Governance, Climate, Social, etc.
+  difficulty    String              // basic, intermediate, advanced
+  qualityScore  Float?              // Human quality rating 0-1
+  isValidated   Boolean  @default(false)
+  validatedBy   String?             // Expert who validated
+  validatedAt   DateTime?
+  tags          String[]            // Topic tags for filtering
+  metadata      Json?               // Additional context
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relations
+  evaluations   ModelEvaluation[]
+  
+  @@index([standard])
+  @@index([category])
+  @@index([difficulty])
+  @@index([isValidated])
+  @@index([qualityScore])
+}
+
+// Model versions and finetuning jobs
+model FinetunedModel {
+  id                String   @id @default(cuid())
+  name              String              // Model identifier
+  version           String              // Version string (e.g., "v1.0", "v2.1")
+  baseModel         String              // Base model used (gpt-4, llama2, etc.)
+  trainingJobId     String?             // External training job reference
+  modelPath         String?             // Local model file path
+  apiEndpoint       String?             // API endpoint if hosted
+  status            String              // training, completed, failed, deployed
+  config            Json                // Training configuration
+  trainingMetrics   Json?               // Training loss, accuracy, etc.
+  evaluationScore   Float?              // Overall evaluation score
+  isActive          Boolean  @default(false)
+  isProduction      Boolean  @default(false)
+  description       String?
+  trainingStarted   DateTime?
+  trainingCompleted DateTime?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  evaluations       ModelEvaluation[]
+  
+  @@unique([name, version])
+  @@index([status])
+  @@index([isActive])
+  @@index([isProduction])
+  @@index([evaluationScore])
+}
+
+// Model evaluation results
+model ModelEvaluation {
+  id                String   @id @default(cuid())
+  modelId           String
+  exampleId         String?             // If evaluated on specific example
+  evaluationType    String              // automatic, human, benchmark
+  score             Float               // 0-1 evaluation score
+  metrics           Json                // Detailed metrics (BLEU, ROUGE, etc.)
+  evaluationData    Json?               // Test data used
+  evaluatedBy       String?             // Human evaluator
+  notes             String?
+  createdAt         DateTime @default(now())
+  
+  // Relations
+  model             FinetunedModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  example           TrainingExample? @relation(fields: [exampleId], references: [id], onDelete: Cascade)
+  
+  @@index([modelId])
+  @@index([exampleId])
+  @@index([evaluationType])
+  @@index([score])
+}
+
+// Training datasets and splits
+model TrainingDataset {
+  id           String   @id @default(cuid())
+  name         String              // Dataset identifier
+  description  String?
+  version      String              // Dataset version
+  splitConfig  Json                // train/val/test splits
+  examples     Json                // Array of example IDs
+  standards    String[]            // Standards covered
+  categories   String[]            // Categories included
+  totalSize    Int                 // Total number of examples
+  trainSize    Int                 // Training split size
+  valSize      Int                 // Validation split size
+  testSize     Int                 // Test split size
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  @@unique([name, version])
+  @@index([isActive])
+  @@index([standards])
+  @@index([categories])
+}

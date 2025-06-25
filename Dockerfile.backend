@@ -1,0 +1,21 @@
+FROM oven/bun:1.0 as base
+
+WORKDIR /app
+
+# Copy package.json and bun.lockb
+COPY backend/package.json backend/bun.lockb ./
+
+# Install dependencies
+RUN bun install
+
+# Copy the rest of the application
+COPY backend/ ./
+
+# Generate Prisma client
+RUN bunx prisma generate
+
+# Expose the port the app runs on (assuming default Elysia port)
+EXPOSE 3001
+
+# Command to run the application
+CMD ["bun", "run", "start"] 
