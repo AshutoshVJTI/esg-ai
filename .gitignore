@@ -1,1 +1,345 @@
- .DS_Store
+# ================================================================
+# Carbon Emissions Compliance AI - .gitignore
+# ================================================================
+
+# ================================
+# Operating System Generated Files
+# ================================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ================================
+# Node.js & Package Managers
+# ================================
+# Dependencies
+node_modules/
+jspm_packages/
+bower_components/
+
+# Package manager locks (keep package-lock.json but ignore yarn.lock)
+yarn.lock
+*.tgz
+*.tar.gz
+
+# Yarn v2+
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# npm
+.npm
+npm-debug.log*
+npm-error.log*
+
+# Bun
+bun.lockb
+.bun
+
+# pnpm
+.pnpm-debug.log*
+
+# ================================
+# Environment & Configuration
+# ================================
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Configuration files with sensitive data
+config/local.json
+config/production.json
+config/secrets.json
+
+# ================================
+# Build & Distribution
+# ================================
+# Build outputs
+build/
+dist/
+out/
+.next/
+.nuxt/
+.vuepress/dist/
+.docusaurus/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Vite
+.vite/
+
+# ================================
+# Testing & Coverage
+# ================================
+# Test coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Testing
+test-results/
+playwright-report/
+blob-report/
+
+# ================================
+# Cache & Temporary Files
+# ================================
+# Cache directories
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Temporary directories
+temp/
+tmp/
+.temp/
+.tmp/
+
+# Logs
+logs/
+*.log
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ================================
+# Development Tools & IDEs
+# ================================
+# IDE files
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+.idea/
+*.swp
+*.swo
+*~
+
+# JetBrains IDEs
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Visual Studio
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ================================
+# Database & Prisma
+# ================================
+# Prisma
+prisma/migrations/dev.db*
+prisma/dev.db*
+prisma/test.db*
+*.db
+*.sqlite
+*.sqlite3
+
+# Database dumps
+*.sql
+*.dump
+
+# ================================
+# AI/ML & Vector Stores
+# ================================
+# ChromaDB
+.chroma/
+chroma.db
+chroma.sqlite3
+.chromadb/
+
+# Vector embeddings and model files
+embeddings/
+models/
+*.pkl
+*.pickle
+*.pt
+*.pth
+*.onnx
+*.pb
+
+# Training data and outputs
+training_data/
+training_outputs/
+fine_tuned_models/
+
+# Hugging Face cache
+.cache/huggingface/
+
+# ================================
+# File Uploads & Documents
+# ================================
+# Uploaded files (keep structure but ignore content)
+uploads/*
+!uploads/.gitkeep
+
+# Processed documents
+processed/
+extracted/
+
+# Large files
+*.pdf
+*.docx
+*.xlsx
+*.pptx
+*.zip
+*.rar
+*.7z
+
+# Exception: Keep sample/demo files in specific directories
+!esg_corpus/**/*.pdf
+!standards/**/*.pdf
+
+# ================================
+# Docker & Containerization
+# ================================
+# Docker
+.dockerignore
+
+# Docker Compose overrides
+docker-compose.override.yml
+docker-compose.*.yml
+!docker-compose.yml
+
+# ================================
+# Cloud & Deployment
+# ================================
+# Vercel
+.vercel/
+
+# Netlify
+.netlify/
+
+# AWS
+.aws/
+
+# Google Cloud
+.gcloud/
+
+# Heroku
+.heroku/
+
+# ================================
+# Security & Secrets
+# ================================
+# API keys and secrets
+*.key
+*.pem
+*.crt
+*.cert
+certificate.*
+private-key.*
+
+# JWT secrets
+jwt-secret.*
+
+# OAuth
+.oauth/
+
+# ================================
+# Monitoring & Analytics
+# ================================
+# Error tracking
+.sentry/
+
+# Analytics
+.amplitude/
+
+# ================================
+# Backup & Archive
+# ================================
+# Backup files
+*.backup
+*.bak
+*.old
+*.orig
+
+# Archives
+*.tar
+*.zip
+*.rar
+*.7z
+*.gz
+*.bz2
+
+# ================================
+# Project Specific
+# ================================
+# Script outputs
+run-output.log
+setup.log
+
+# Document processing temporary files
+/temp/
+/backend/temp/
+
+# Model training checkpoints
+checkpoints/
+wandb/
+
+# API documentation generated files
+docs/build/
+
+# ================================
+# Keep Essential Files
+# ================================
+# Keep these files/directories even if they match patterns above
+!.github/
+!.vscode/settings.json
+!README.md
+!LICENSE
+!CONTRIBUTING.md
+!package.json
+!package-lock.json
+!tsconfig.json
+!.gitignore
+!.env.example
+!docker-compose.yml
+!Dockerfile*
