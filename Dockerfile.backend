@@ -1,21 +1,39 @@
-FROM oven/bun:1.0 as base
+FROM node:20-alpine AS base
+
+# Install system dependencies for native packages
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    cairo-dev \
+    jpeg-dev \
+    pango-dev \
+    musl-dev \
+    giflib-dev \
+    pixman-dev \
+    pangomm-dev \
+    libjpeg-turbo-dev \
+    freetype-dev
 
 WORKDIR /app
 
-# Copy package.json and bun.lockb
-COPY backend/package.json backend/bun.lockb ./
+# Copy package files
+COPY backend/package.json backend/package-lock.json ./
 
-# Install dependencies
-RUN bun install
+# Install dependencies using npm (more stable than bun in Docker)
+RUN npm install --legacy-peer-deps
 
 # Copy the rest of the application
 COPY backend/ ./
 
 # Generate Prisma client
-RUN bunx prisma generate
+RUN npx prisma generate
 
-# Expose the port the app runs on (assuming default Elysia port)
+# Build the application
+RUN npm run build
+
+# Expose the port the app runs on
 EXPOSE 3001
 
-# Command to run the application
-CMD ["bun", "run", "start"] 
+# Command to run the application using node
+CMD ["npm", "run", "start:prod"] 
