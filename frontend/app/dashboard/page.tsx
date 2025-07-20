@@ -8,7 +8,7 @@ export default function DashboardPage() {
     <>
       <DashboardHeader 
         heading="ESG Compliance Dashboard"
-        text="Upload your ESG reports and analyze them against popular standards."
+        text="Upload your ESG reports and let Reggie analyze them against popular standards."
       />
       
       <div className="grid gap-6 md:grid-cols-2">

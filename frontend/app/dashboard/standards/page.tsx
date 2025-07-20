@@ -21,7 +21,7 @@ export default function StandardsPage() {
     <>
       <DashboardHeader 
         heading="ESG Standards"
-        text="Manage the ESG standards and guidelines used for compliance checking."
+        text="Manage the ESG standards and guidelines that Reggie uses for compliance checking."
       >
         <Button 
           className="gap-2"

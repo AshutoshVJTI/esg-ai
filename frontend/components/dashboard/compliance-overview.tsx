@@ -88,7 +88,7 @@ export function ComplianceOverview() {
           <div className="text-center space-y-3 max-w-md">
             <p className="text-lg font-medium text-muted-foreground">No Reports Analyzed Yet</p>
             <p className="text-muted-foreground">
-              Upload and analyze ESG reports to see compliance statistics and insights.
+              Upload and analyze ESG reports with Reggie to see compliance statistics and insights.
             </p>
             <Button asChild className="mt-4">
               <Link href="/dashboard/upload">

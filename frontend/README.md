@@ -1,10 +1,10 @@
-# Carbon Emissions Compliance AI - Frontend
+# Reggie - AI-Powered ESG Compliance Platform - Frontend
 
-This is the frontend application for the Carbon Emissions Compliance AI platform, built with Next.js, TypeScript, and Tailwind CSS.
+This is the frontend application for the Reggie AI-powered ESG compliance platform, built with Next.js, TypeScript, and Tailwind CSS.
 
 ## Overview
 
-The Carbon Emissions Compliance AI platform helps organizations monitor, analyze, and ensure compliance with carbon emissions standards. This frontend provides an intuitive user interface for interacting with the platform's features.
+The Reggie AI-powered ESG compliance platform helps organizations monitor, analyze, and ensure compliance with ESG standards. This frontend provides an intuitive user interface for interacting with the platform's features.
 
 ## Features
 
@@ -66,7 +66,7 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+Open [https://tryreggie.ai](https://tryreggie.ai) in your browser to see the application.
 
 ### Building for Production
 

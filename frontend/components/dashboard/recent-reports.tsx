@@ -92,7 +92,7 @@ export function RecentReports() {
             <div className="text-center space-y-2">
               <p className="font-medium text-muted-foreground">No reports yet</p>
               <p className="text-sm text-muted-foreground">
-                Upload your first ESG report to get started with compliance analysis
+                Upload your first ESG report to get started with Reggie's analysis
               </p>
               <Button asChild className="mt-4">
                 <Link href="/dashboard/upload">

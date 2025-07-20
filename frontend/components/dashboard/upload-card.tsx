@@ -11,7 +11,7 @@ export function UploadCard() {
       <CardHeader>
         <CardTitle>Upload Report</CardTitle>
         <CardDescription>
-          Upload your ESG report for analysis
+          Upload your ESG report for Reggie to analyze
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col items-center justify-center space-y-4 py-6">

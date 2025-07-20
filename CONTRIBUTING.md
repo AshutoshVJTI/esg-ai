@@ -1,6 +1,6 @@
-# 🤝 Contributing to Carbon Emissions Compliance AI
+# 🤝 Contributing to Reggie - AI-Powered ESG Compliance Platform
 
-Thank you for your interest in contributing to the Carbon Emissions Compliance AI project! This guide will help you get started with contributing to our mission of making ESG compliance more accessible and intelligent.
+Thank you for your interest in contributing to the Reggie AI-powered ESG compliance platform! This guide will help you get started with contributing to our mission of making ESG compliance more accessible and intelligent.
 
 ## 📋 Table of Contents
 
@@ -70,11 +70,11 @@ Before contributing, ensure you have:
 ```bash
 # Fork the repository on GitHub
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/esg-ai.git
-cd esg-ai
+git clone https://github.com/YOUR_USERNAME/reggie-ai.git
+cd reggie-ai
 
 # Add upstream remote
-git remote add upstream https://github.com/AshutoshVJTI/esg-ai.git
+git remote add upstream https://github.com/AshutoshVJTI/reggie-ai.git
 
 # Run the setup script
 ./run.sh
@@ -115,7 +115,7 @@ npm run dev
 ```
 
 ### 4. Verify Setup
-- Frontend: http://localhost:3000
+- Frontend: https://tryreggie.ai
 - Backend API: http://localhost:3001
 - API Docs: http://localhost:3001/swagger
 

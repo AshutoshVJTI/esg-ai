@@ -174,7 +174,7 @@ export default function HistoryPage() {
     <>
       <DashboardHeader 
         heading="Activity History"
-        text="Track all activities related to your ESG compliance reports."
+        text="Track all activities related to your ESG compliance reports with Reggie."
       >
         <div className="flex items-center gap-2">
           <DatePickerWithRange 

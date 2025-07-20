@@ -21,7 +21,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/carbon_emissions_db
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/reggie_db
     networks:
       - app-network
     volumes:
@@ -34,7 +34,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=carbon_emissions_db
+      - POSTGRES_DB=reggie_db
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:

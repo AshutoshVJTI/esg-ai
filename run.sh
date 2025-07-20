@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Carbon Emissions Compliance AI - One-Click Setup Script
+# Reggie - AI-Powered ESG Compliance Platform - One-Click Setup Script
 # This script sets up and runs both frontend and backend
 
 set -e  # Exit on any error
@@ -17,7 +17,7 @@ print_color() {
     printf "${1}${2}${NC}\n"
 }
 
-print_color $BLUE "🚀 Carbon Emissions Compliance AI Setup"
+print_color $BLUE "🚀 Reggie - AI-Powered ESG Compliance Platform Setup"
 print_color $BLUE "========================================"
 
 # Check if user wants Docker or local setup
@@ -195,7 +195,7 @@ elif [[ "$setup_choice" == "1" ]]; then
             print_color $YELLOW "⚠️  Please update DATABASE_URL in backend/.env with your PostgreSQL credentials"
         else
             cat > backend/.env << EOF
-DATABASE_URL="postgresql://postgres:password@localhost:5432/carbon_emissions_db"
+DATABASE_URL="postgresql://postgres:password@localhost:5432/reggie_db"
 OPENAI_API_KEY=""
 EOF
             print_color $GREEN "✅ Created basic backend/.env file"

@@ -172,7 +172,7 @@ export default function AnalyticsPage() {
             <div className="text-center space-y-3 max-w-md">
               <p className="text-lg font-medium text-muted-foreground">No Reports Analyzed Yet</p>
               <p className="text-muted-foreground">
-                Upload and analyze ESG reports to see analytics and insights.
+                Upload and analyze ESG reports with Reggie to see analytics and insights.
               </p>
               <Button asChild className="mt-4">
                 <Link href="/dashboard/upload">
@@ -217,7 +217,7 @@ export default function AnalyticsPage() {
     <>
       <DashboardHeader 
         heading="ESG Analytics"
-        text="Analyze your ESG compliance performance across reports and standards."
+        text="Analyze your ESG compliance performance with Reggie across reports and standards."
       >
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" className="gap-1">

@@ -167,7 +167,7 @@ export function StandardsList() {
                     There are no popular standards available in the system yet.
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Contact your administrator to add ESG standards or create your own custom standards.
+                    Contact your administrator to add ESG standards for Reggie to use, or create your own custom standards.
                   </p>
                   <Button 
                     variant="outline" 

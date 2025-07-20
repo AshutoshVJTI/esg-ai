@@ -1,4 +1,4 @@
-# 🌱 Carbon Emissions Compliance AI
+# 🌱 Reggie - AI-Powered ESG Compliance Platform
 
 > **A comprehensive AI-powered platform for ESG (Environmental, Social, and Governance) compliance analysis and reporting**
 
@@ -8,13 +8,13 @@
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/)
 
-![Carbon Emissions Compliance AI Dashboard](https://img.shields.io/badge/ESG_Compliance-AI_Powered-green?style=for-the-badge)
+![Reggie - AI-Powered ESG Compliance Platform](https://img.shields.io/badge/Reggie-AI_Powered_ESG_Compliance-green?style=for-the-badge)
 
 ---
 
 ## 🎯 **Overview**
 
-Transform your ESG compliance workflow with intelligent AI analysis. This platform helps organizations analyze sustainability reports against multiple international standards, identify compliance gaps, and generate actionable insights using cutting-edge RAG (Retrieval-Augmented Generation) technology.
+Transform your ESG compliance workflow with Reggie's intelligent AI analysis. This platform helps organizations analyze sustainability reports against multiple international standards, identify compliance gaps, and generate actionable insights using cutting-edge RAG (Retrieval-Augmented Generation) technology.
 
 ### 🚀 **Quick Demo**
 ```bash
@@ -183,7 +183,7 @@ docker-compose ps
 ### Backend Environment (.env)
 ```bash
 # Database Connection
-DATABASE_URL="postgresql://username:password@localhost:5432/carbon_emissions_db"
+DATABASE_URL="postgresql://username:password@localhost:5432/reggie_db"
 
 # AI Configuration (Optional)
 OPENAI_API_KEY="sk-your-openai-key-here"

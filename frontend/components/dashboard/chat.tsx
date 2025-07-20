@@ -195,7 +195,7 @@ export function Chat() {
                 <MessageCircle className="h-12 w-12 mb-4 opacity-50" />
                 <h3 className="font-medium mb-2">Standards & Guidelines Assistant</h3>
                 <p className="text-sm">
-                  Ask questions about carbon emissions standards, ESG guidelines, or compliance requirements.
+                  Ask Reggie about ESG standards, compliance guidelines, or any questions about your reports.
                 </p>
                 <div className="flex items-center gap-2 mt-4 text-xs bg-muted p-2 rounded">
                   <Keyboard className="h-4 w-4" />

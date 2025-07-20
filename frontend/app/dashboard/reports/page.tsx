@@ -335,7 +335,7 @@ export default function ReportsPage() {
     <>
       <DashboardHeader 
         heading="ESG Reports"
-        text="View and manage all your ESG compliance reports."
+        text="View and manage all your ESG compliance reports analyzed by Reggie."
       >
         <Button asChild>
           <Link href="/dashboard/upload">Upload New Report</Link>
@@ -474,10 +474,10 @@ export default function ReportsPage() {
                 <div className="text-center space-y-3 max-w-md">
                   <p className="text-lg font-medium text-muted-foreground">No Reports Yet</p>
                   <p className="text-muted-foreground">
-                    You haven't uploaded any ESG reports yet.
+                    You haven't uploaded any ESG reports for Reggie to analyze yet.
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Upload your first ESG report to get started with compliance analysis
+                    Upload your first ESG report to get started with Reggie's compliance analysis
                   </p>
                   <Button asChild className="mt-4">
                     <Link href="/dashboard/upload">

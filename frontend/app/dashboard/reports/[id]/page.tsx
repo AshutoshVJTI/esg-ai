@@ -43,7 +43,7 @@ export default async function ReportPage({ params }: ReportPageProps) {
   // Use reportName from results if available, otherwise use the report name
   const reportName = report.results?.reportName || report.name;
   // Use summary from results if available
-  const description = report.results?.summary || report.description || "AI-powered ESG compliance analysis";
+          const description = report.results?.summary || report.description || "Reggie's AI-powered ESG compliance analysis";
 
   return (
     <>

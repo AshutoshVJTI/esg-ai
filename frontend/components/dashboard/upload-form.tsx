@@ -184,7 +184,7 @@ export function UploadForm() {
           <Upload className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
           <h3 className="text-lg font-medium mb-2">Upload Report</h3>
           <p className="text-sm text-muted-foreground mb-2">
-            Drop your ESG report here or click to browse
+            Drop your ESG report here for Reggie to analyze, or click to browse
           </p>
           <p className="text-xs text-muted-foreground">
             Supports PDF and DOCX files
