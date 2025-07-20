@@ -7,6 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { MessageCircle, X, Send, Plus, Trash, Keyboard } from "lucide-react";
 import { useChat } from "./chat-context";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Logo } from "@/components/ui/logo";
 
 interface Message {
   content: string;
@@ -162,8 +163,9 @@ export function Chat() {
         <div className="flex flex-col h-full">
           {/* Chat header */}
           <div className="flex items-center justify-between p-4 border-b">
-            <div className="flex items-center">
-              <h3 className="font-medium ml-2">Standards & Guidelines Help</h3>
+            <div className="flex items-center gap-3">
+              <Logo variant="icon" width={24} height={24} />
+              <h3 className="font-medium">Standards & Guidelines Help</h3>
             </div>
             <div className="flex items-center gap-1">
               <TooltipProvider>

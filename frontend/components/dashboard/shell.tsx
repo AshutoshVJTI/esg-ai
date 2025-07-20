@@ -6,6 +6,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Chat } from "@/components/dashboard/chat";
+import { Logo } from "@/components/ui/logo";
 
 interface DashboardShellProps {
   children: React.ReactNode;
@@ -21,7 +22,7 @@ export function DashboardShell({ children }: DashboardShellProps) {
         <div className="fixed inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setSidebarOpen(false)} />
         <div className="fixed inset-y-0 left-0 w-64 bg-background border-r">
           <div className="flex items-center justify-between p-4">
-            <span className="font-bold">Reggie</span>
+            <Logo variant="text" width={120} height={32} />
             <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(false)}>
               <X className="h-5 w-5" />
             </Button>
@@ -34,7 +35,7 @@ export function DashboardShell({ children }: DashboardShellProps) {
       <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0 border-r">
         <div className="flex flex-col flex-1 h-full">
           <div className="flex items-center justify-between p-4">
-            <span className="font-bold">Reggie</span>
+            <Logo variant="text" width={120} height={32} />
             <ModeToggle />
           </div>
           <Sidebar />

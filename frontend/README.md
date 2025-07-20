@@ -84,6 +84,17 @@ npm run start
 yarn start
 ```
 
+## Logo Integration
+
+The application uses the Reggie logo throughout the interface. Logo files are stored in `public/images/` and include:
+
+- `reggie-logo-dark.png` - Dark variant of the icon-only logo
+- `reggie-logo-light.png` - Light variant of the icon-only logo  
+- `reggie-logo-text-dark.png` - Dark variant of the logo with text
+- `reggie-logo-text-light.png` - Light variant of the logo with text
+
+The `Logo` component (`components/ui/logo.tsx`) automatically switches between light and dark variants based on the current theme.
+
 ## Project Structure
 
 ```
@@ -102,6 +113,7 @@ frontend/
 ├── hooks/                # Custom React hooks
 ├── lib/                  # Utility functions and libraries
 ├── public/               # Static assets
+│   └── images/           # Logo and image assets
 └── ...                   # Configuration files
 ```
 

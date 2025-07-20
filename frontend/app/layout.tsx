@@ -19,6 +19,9 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: 'Reggie - AI-Powered ESG Compliance Platform',
   description: 'Next-generation AI-powered ESG compliance platform built for enterprise scale. Reduce compliance costs by 70% while ensuring 100% adherence to international standards.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({

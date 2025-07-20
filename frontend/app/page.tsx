@@ -20,6 +20,7 @@ import {
   TargetIcon,
   DollarSignIcon
 } from '@/components/ui/custom-icons';
+import { Logo } from '@/components/ui/logo';
 
 export default function LandingPage() {
   const containerVariants = {
@@ -74,12 +75,7 @@ export default function LandingPage() {
               whileHover={{ opacity: 0.8 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg flex items-center justify-center">
-                <ESGLogo className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent font-display">
-                Reggie
-              </span>
+              <Logo variant="text" width={140} height={36} />
             </motion.div>
             <div className="hidden md:flex items-center space-x-8">
               <motion.a 
@@ -843,7 +839,7 @@ export default function LandingPage() {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
-                              Chat with Reggie
+              Chat with Reggie
             </motion.button>
           </motion.div>
           <motion.p 
@@ -867,10 +863,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-4 gap-8">
             <motion.div variants={itemVariants}>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg flex items-center justify-center">
-                  <ESGLogo className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold font-display">Reggie</span>
+                <Logo variant="text" width={120} height={32} className="invert" />
               </div>
               <p className="text-gray-400">
                 Next-generation ESG compliance platform built for enterprise scale.
@@ -908,7 +901,7 @@ export default function LandingPage() {
             className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
             variants={itemVariants}
           >
-                            <p>&copy; 2024 Reggie. All rights reserved. | Built for enterprise scale | GDPR & CCPA compliant</p>
+            <p>&copy; 2024 Reggie. All rights reserved. | Built for enterprise scale | GDPR & CCPA compliant</p>
           </motion.div>
         </div>
       </motion.footer>
